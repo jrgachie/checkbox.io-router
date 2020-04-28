@@ -23,7 +23,7 @@ let server = http.createServer(function(req, res) {
         proxy.web(req, res, {target: TARGET});
 });
 
-server.listen(port, () => console.log(`Proxy service listening on 192.168.44.35:${port}`);
+server.listen(port, () => console.log(`Proxy service listening on 192.168.44.35:${port}`));
 
 
 
