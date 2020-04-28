@@ -19,7 +19,7 @@ let server = http.createServer(function(req, res) {
         TARGET = TARGET === MASTER ? BROKEN : MASTER;
         console.log(`Switching server to ${TARGET}.`);
 
-        return `Server switched to ${TARGET}`;
+        res.end(`Server switched to ${TARGET}`);
 
         //res.send({preview: `Server switched to ${TARGET}`});
     }
