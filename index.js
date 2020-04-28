@@ -8,8 +8,8 @@ const httpProxy = require('http-proxy');
 
 const marqdown = require('./marqdown');
 
-const MASTER = 'http://192.168.44.25:3000/preview';
-const BROKEN = 'http://192.168.44.30:3000/preview';
+const MASTER = 'http://192.168.44.25:3000';
+const BROKEN = 'http://192.168.44.30:3000';
 let TARGET = MASTER;
 
 let options = {};
@@ -18,6 +18,7 @@ let server = http.createServer(function(req, res) {
     if (req.url.includes('switch')) {
         TARGET = TARGET === MASTER ? BROKEN : MASTER;
         console.log(`Switching server to ${TARGET}.`);
+        res.send({preview: `Server switched to ${TARGET}`});
     }
     else
         proxy.web(req, res, {target: TARGET});
