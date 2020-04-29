@@ -1,12 +1,7 @@
-const express = require('express')
-const app = express()
 const port = 3080
 
-const got = require('got');
 const http = require('http');
 const httpProxy = require('http-proxy');
-
-const marqdown = require('./marqdown');
 
 const MASTER = 'http://192.168.44.25:3000';
 const BROKEN = 'http://192.168.44.30:3000';
@@ -20,8 +15,6 @@ let server = http.createServer(function(req, res) {
         console.log(`Switching server to ${TARGET}.`);
 
         res.end(`Server switched to ${TARGET}`);
-
-        //res.send({preview: `Server switched to ${TARGET}`});
     }
     else
         proxy.web(req, res, {target: TARGET});
